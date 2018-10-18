@@ -1,0 +1,15 @@
+@font-face{
+  font-family: 'PlayfairDisplay';
+	src: url('./PlayfairDisplay-Black.ttf' ) format('ttf'),
+   url('./PlayfairDisplay-Bold.ttf') format('ttf');
+	font-weight: 700;
+	font-style: normal;
+}
+
+.hello{
+	color: red;
+	width: 450px;
+	height: 750px;
+	font-family: 'PlayfairDisplay';
+  background: url('./icon.png') center center no-repeat;
+}

@@ -8,10 +8,11 @@
       app: './src/index.js'
     },
     devtool: 'inline-source-map',
-    devServer: {
-      contentBase: './dist',
-      hot: true
-    },
+   devServer: {
+    contentBase: './src',
+    compress: true,
+    port: 9000,
+  },
    module: {
      rules: [
        {
@@ -30,5 +31,21 @@
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist')
-    }
+    },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['babel-preset-env'],
+            plugins: [require('babel-plugin-transform-object-rest-spread')],
+          },
+        },
+      },
+    ],
+  },
+    
   };

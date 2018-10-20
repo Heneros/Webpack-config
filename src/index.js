@@ -1,32 +1,16 @@
 import _ from 'lodash';
-import printMe from './print.js';
-import style from './style.css';
+import './style.css';
+import Picture from './icon.png';
 
+function component() {
+  let element = document.createElement('div');
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.classList.add('hello');
+  return element;
 
+  const myPicture = new Image();
+  myPicture = Picture;
+  element.appendChild(myPicture)
+}
 
-  function component() {
-    var element = document.createElement('div');
-    var btn = document.createElement('button');
-
-
-   element.innerHTML = [
-     'Hello webpack!',
-     '5 cubed is equal to ' + cube(5)
-   ].join('\n\n');
-
-    return element;
-  }
-
-
- let element = component(); 
- document.body.appendChild(element);
-
-  if (module.hot) {
-    module.hot.accept('./print.js', function() {
-      console.log('Accepting the updated printMe module!');
-
-    document.body.removeChild(element);
-    element = component(); 
-     document.body.appendChild(element);
-    })
-  }
+document.body.appendChild(component());

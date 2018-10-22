@@ -1,26 +1,64 @@
-const path = require('path');
+  const path = require('path');
+  // const HtmlWebpackPlugin = require('html-webpack-plugin');
+  // const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = {
-entry: './src/index.js',
-output: {
-filename: 'main.js',
-path: path.resolve(__dirname, 'dist')
+  module.exports = {
+    entry: {
+      main: ['./src/main.js']
+    },
+   mode: "development",
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },   
+    devServer: {
+    contentBase: './dist'
+   },
+   module:{
+   	rules: [
+   	{
+   		test: /\.css$/,
+
+  use: [
+{ 
+	loader: "style-loader"
 },
-module: {
-	rules: [
-   {
-test: /\.css$/,
-use: [
-'style-loader',
-'css-loader'
+{ 
+	loader: "css-loader"
+}
        ]
+     	},
+      {
+        test: /\.html$/,
+        use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].html"
+              }
+            },
+            {
+              loader: "extract-loader"
+            },
+             {
+              loader: "html-loader",
+              options: {
+                attrs: ["img:src"]
+              }
+            }
+        ]
       },
-     {
-   	test: /\.(png|svg|jpg|gif)$/,
-   	use: [
-   'file-loader'
+      {
+        test: /\.(jpg|gif|png|svg)$/,
+        use: [
+         {
+          loader: "file-loader",
+          options: {
+            name: "images/[name]-[hash:8].[ext]"
+          }
+         }
+        ]
+      }
    	]
    }
-	  ]
-   }
-};
+  };

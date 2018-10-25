@@ -8,7 +8,7 @@
     },
    mode: "development",
     output: {
-      filename: '[name].bundle.js',
+      filename: 'app.bundle.js',
       path: path.resolve(__dirname, 'dist')
     },   
     devServer: {
@@ -19,11 +19,8 @@
           {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader"
-          }
-        ]
+        loader: "babel-loader"
+        
       },
     {
       test: /\.css$/,

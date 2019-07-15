@@ -1,7 +1,5 @@
-require("./main.css");
-require("./index.html");
-require("./images/link.jpg");
+require("babel-runtime/regenerator")
+require("./main.css") 
+require("webpack-hot-middleware/client?reload=true")
+require("./index.html")
 
-let test = () => console.log(123);
-
-test();
